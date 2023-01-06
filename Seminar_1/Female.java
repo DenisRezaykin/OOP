@@ -1,26 +1,14 @@
-public class Female extends Human {
-    int husband;
-    private GenderType sex;
+import java.util.Date;
 
-    public Female(String name, String surname, String patronimico, int birthYear, int birthMonth, int birthDay) {
-        super(name, surname, patronimico, birthYear, birthMonth, birthDay);
-        this.sex = GenderType.female;
+public class Female extends FamilyHuman {
+
+    public Female(Date birthDate, String firstName, String middleName, String lastName) {
+        super(birthDate, GenderEnum.FEMALE, firstName, middleName, lastName);
     }
 
-    public Female(String name, String surname) {
-        super(name, surname);
-        this.sex = GenderType.female;
+    @Override
+    public void addChild(FamilyHuman child) {
+        this.children.add(child);
+        child.mother = this;
     }
-
-    public Female() {
-        this.sex = GenderType.female;
-    }
-    public String toString() {
-        return super.toString() + ", женщина";
-    }
-
-    public void getMarried(Human husband) {
-        super.getMarried(husband);
-    }
-
 }
